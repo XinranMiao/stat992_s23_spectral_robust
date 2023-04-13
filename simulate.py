@@ -24,4 +24,4 @@ def conn2adj(B):
 
 def cal_mis_rate(y, yhat):
     rate = np.mean(abs(y - yhat))
-    return rate
+    return min(rate, 1 - rate)
