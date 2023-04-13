@@ -21,3 +21,7 @@ def conn2adj(B):
         for j in range(i):
             A[i, j] = bernoulli.rvs(size = 1, p = B[i, j])
     return A + A.transpose()
+
+def cal_mis_rate(y, yhat):
+    rate = np.mean(abs(y - yhat))
+    return rate
