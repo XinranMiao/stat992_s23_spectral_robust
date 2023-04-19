@@ -154,11 +154,10 @@ while k < max_iter:
 Xhat = Y
 Xhat_normalized = normalize(Xhat, axis = 1, norm = 'l2')
 
-plt.matshow(Xhat, cmap = plt.cm.binary)
+plt.matshow(Xhat - np.diag(Xhat) * np.eye(N), cmap = plt.cm.binary)
 plt.savefig(output_dir + 'Xhat.png')
-plt.matshow(Xhat_normalized, cmap = plt.cm.binary)
+plt.matshow(Xhat_normalized - np.diag(Xhat_normalized) * np.eye(N),  cmap = plt.cm.binary)
 plt.savefig(output_dir + 'Xhat_normalized.png')
-
 
 
 yhat_list = []
@@ -178,7 +177,7 @@ for seed in range(100):
     
    # print("seed = ", seed, "mis rate inlier = ", mis_rate_inlier,
    #       ", mis rate = ", mis_rate, "\n")
-print("job=", job_id,", avg mis rate = ", np.mean(mis_rates_inlier))
+print("job=", job_id,", avg mis rate on inliers = ", np.mean(mis_rates_inlier))
 
 
 # save results
