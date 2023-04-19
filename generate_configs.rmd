@@ -1,0 +1,14 @@
+
+```{r}
+library(tidyverse)
+args <- expand.grid(n1 = c(100, 250, 500),
+                    p1 = c(0.19, 0.29),#seq(0.19, 0.29, by = 0.02),
+                    p2 = 0.29,  # seq(0.19, 0.29, by = 0.02)
+                    q = c(0.11, 0.17, 0.2),
+                    degree = c("True", "False")
+                    ) %>%
+  as.data.frame() %>%
+  mutate(n2 = 1000 - n1)
+args %>%
+  write.csv(file = "args_imbalanced.csv", row.names = FALSE)
+```
