@@ -23,7 +23,7 @@ import time
 from simulate import *
 
 job_id = int(sys.argv[1])
-args = pd.read_csv('args_imbalanced.csv').iloc[job_id]
+args = pd.read_csv('small_args.csv').iloc[job_id]
 print(args)
 n1 = args["n1"]
 n2 = args["n2"]
