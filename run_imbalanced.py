@@ -182,6 +182,7 @@ for seed in range(100):
    # print("seed = ", seed, "mis rate inlier = ", mis_rate_inlier,
    #       ", mis rate = ", mis_rate, "\n")
 print("job=", job_id,", avg mis rate on inliers = ", np.mean(mis_rates_inlier))
+print(args)
 
 
 # save results
@@ -191,3 +192,6 @@ np.save(output_dir + 'A_combined.npy', A_combined)
 np.save(output_dir + 'X.npy', X)
 np.save(output_dir + 'Xhat.npy', Xhat)
 np.save(output_dir + 'Xhat_normalized.npy', Xhat_normalized)
+
+
+print("===========================")
