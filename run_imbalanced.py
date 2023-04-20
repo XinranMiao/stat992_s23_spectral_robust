@@ -36,7 +36,7 @@ r = 2
 q = args["q"]
 degree_correct = args["degree"]
 
-output_dir = "figures/" + "imbalanced" + str(job_id) + "/"
+output_dir = "figures/" + "lambda" + str(job_id) + "/"
 if not os.path.isdir(output_dir):
     os.mkdir(output_dir)
 
@@ -112,7 +112,11 @@ Lambda = 0
 rho = 1
 max_iter = 100
 alpha = 0
-lam = .11
+
+# choose lambda
+degrees = np.mean(A_combined, axis = 0)
+trimmed = degrees[(degrees >= np.quantile(degrees, 0.2)) & (degrees <= np.quantile(degrees, 0.8))]
+lam = np.mean(trimmed)
 
 
 if degree_correct:
