@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-for i in `seq 1 35`
+for i in `seq 4 10`
 do 
   echo "$i"
   python3 run_imbalanced.py $i 
