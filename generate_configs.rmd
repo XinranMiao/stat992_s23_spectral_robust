@@ -31,3 +31,29 @@ small_args %>%
   write.csv(file = "small_args.csv", row.names = FALSE)
 ```
 
+```{r}
+args300 <- expand.grid(n1 = c(300),
+                    p1 = c(0.19, 0.29),
+                    p2 = c(0.29, 0.19),
+                    q = c(0.11),
+                    degree = c("True", "False")
+                    ) %>%
+  as.data.frame() %>%
+  mutate(n2 = 1000 - n1)
+args300 <- rbind(args300,
+                 args300 %>% mutate(q = 0.20))
+args300 <- rbind(args300,
+                 expand.grid(n1 = 500,
+                             p1 = c(0.19),
+                             p2 = c(0.29),
+                             q = c(0.11, 0.20),
+                             degree = c("True", "False"),
+                             n2 = 500
+                             )
+                 )
+args300 %>%
+  rowid_to_column(var = "args300_job_id") %>%
+  mutate(args300_job_id = args300_job_id - 1) %>%
+  write.csv(file = "args300.csv", row.names = FALSE)
+```
+
